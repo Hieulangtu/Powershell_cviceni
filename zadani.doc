@@ -1,0 +1,26 @@
+Řešení úloh posílejte na adresu jirsamilan@gmail.com.
+
+
+1.Vypište soubory sestupně dle velikosti, které jsou větší než 100000 bytů.
+
+2.Modifikujte profil Powershellu tak, aby se po spuštění vypsala žlutou barvou informace o aktuální "execution policy" a zelenou barvou cesta k tomuto profilu. 
+
+3.Proveďte konverzi hexadecimální hodnoty řetězce do ascii.
+$s = "506f7765727368656c6c20697320617765736f6d6521"
+
+4.Vytvořte alias np (notepad.exe) a ct (control.exe). Exportujte je do formátu JSON. Potom oba aliasy smažte a obnovte je z JSON souboru.
+
+5.V registru zjistěte, zda je pro přihlášení uživatele zapnuta klávesa Numlock. Pokud není, tak nastavte odpovídající položku registru na hodnotu 2.
+
+Vytvořte podklíč registru HKEY_CURRENT_USER, který nazvete Hrátky s PowerShellem. V něm vytvořte hodnoty obsahující jméno vašeho uživatelského účtu, jméno počítače, aktuální datum a verzi PowerShellu. Pro potvrzení provedené akce si všechny tyto informace vypište. 
+
+6.K řešení následujících úloh použijte WMI/CIM rozhraní. Zjistěte vlastnosti třídy umožňující spravovat tiskárny. Změňte umístění faxu. V informačních systémech MO se disk C: nazývá "Systém" a disk D: "Data". Zjistěte, jak se nazývá váš disk C: a případně ho přejmenujte na "Systém".
+
+7.Vypište seznam nepoužitých účtů a seznam uzamčených účtů.
+Použijte vhodný cmdlet a poté totéž udělejte pomocí CIM rozhraní.
+
+8.Setřiďte znaky v textu “Kobyla má malý bok” vzestupně dle abecedy.
+
+Vygenerujte 10 náhodných čísel mezi 10 a 100 vypište je spolu s jejich druhou mocninou. Výpis proveďte do dvou sloupců, kde v prvním bude hodnota čísla a v druhém jeho mocnina. Oba sloupce budou zarovnané, např. první sloupec od první pozice doprava a druhý od šesté pozice doprava.
+
+Stáhněte si knihu z adresy https://www.gutenberg.org/ebooks/308 ve formátu UTF-8. Vypište seznam znaků, které se v textu vyskytují, a to sestupně podle počtu výskytů.

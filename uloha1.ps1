@@ -1,0 +1,1 @@
+Get-ChildItem | Where-Object { $_.Length -gt 100000 } | Sort-Object -Property Length
