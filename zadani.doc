@@ -24,3 +24,20 @@ Použijte vhodný cmdlet a poté totéž udělejte pomocí CIM rozhraní.
 Vygenerujte 10 náhodných čísel mezi 10 a 100 vypište je spolu s jejich druhou mocninou. Výpis proveďte do dvou sloupců, kde v prvním bude hodnota čísla a v druhém jeho mocnina. Oba sloupce budou zarovnané, např. první sloupec od první pozice doprava a druhý od šesté pozice doprava.
 
 Stáhněte si knihu z adresy https://www.gutenberg.org/ebooks/308 ve formátu UTF-8. Vypište seznam znaků, které se v textu vyskytují, a to sestupně podle počtu výskytů.
+
+9.
+a.Vytvořte textový soubor obsahující text "Hello world." Pro předání parametrů použijte "splatting".
+b.Vypište z logu System události typu "Chyba" z posledních 10 dní. Pokud v logu žádnou chybu nemáte, zkuste "Upozornění". Použijte hashtable.
+
+10.
+Vytvořte v Powershellu interaktivní textové rozhraní, které uživateli umožní procházet adresářovou strukturu.
+Vždy se zobrazí informace o obsahu adresáře, počtu souborů, minimální a maximální velikost souboru.
+Vypíše očíslovaný seznam adresářů, stiskem odpovídajícího čísla přejdu do vybraného adresáře.
+Stiskem klávesy U přejdu v adresářové struktuře o úroveň výš.
+Stiskem klávesy Q se program ukončí.
+
+11.
+a.Vypište seznam odkazů na stránce www.novinky.cz sestupně podle počtu výskytů. Jaké číslo má sekce žena-zdraví?
+b.Napište skript, který stáhne obrázky z vybrané galerie na pbase.com.
+c. Vytvořte skript, který změní systémový čas počítače např. podle worldtimeapi.org. Pokud ho nespustíte jako administrátor, 
+tak se sám restartuje, aby mohl změnu času provést.
