@@ -41,3 +41,8 @@ a.Vypište seznam odkazů na stránce www.novinky.cz sestupně podle počtu výs
 b.Napište skript, který stáhne obrázky z vybrané galerie na pbase.com.
 c. Vytvořte skript, který změní systémový čas počítače např. podle worldtimeapi.org. Pokud ho nespustíte jako administrátor, 
 tak se sám restartuje, aby mohl změnu času provést.
+
+12.
+Vytvořte skript, který oznámí, že byl spuštěn buď bez administrátorských práv, nebo s nimi. Pokud byl spuštěn bez administrátorských práv, tak se restartuje tak, aby administrátorská práva měl.
+
+Vytvořte skript, který při vytvoření souboru ve vybraném adresáři zapíše do souboru outlog.txt informace o jméně souboru a čas jeho vytvoření.
