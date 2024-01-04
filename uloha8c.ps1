@@ -1,8 +1,8 @@
 ﻿# path
-$filePath = "C:\Users\Hieu\Documents\WindowsPowerShell\meninboat.txt"
+$filePath = "D:\4.rocnik-UNOB\1.semester\AplikovaneBezpecnostMilan\WindowsPowerShell\meninboat.txt"
 
 # read
-$text = Get-Content -Path $filePath -Raw
+$text = Get-Content -Path $filePath -raw -Encoding UTF8
 
 $characters = $text -split ""
 

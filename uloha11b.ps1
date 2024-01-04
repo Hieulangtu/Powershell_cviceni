@@ -9,7 +9,6 @@ foreach ($img in $imgs) {
     $savePath = Join-Path $saveFolderPath $imageName
     Invoke-WebRequest -Uri $img -OutFile $savePath
    
-
 }
 
 

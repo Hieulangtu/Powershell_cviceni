@@ -19,4 +19,4 @@ $aliasData | ForEach-Object {
 }
 
 # kontrole
-Get-Alias
+Get-Alias np, ct

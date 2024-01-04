@@ -23,5 +23,5 @@ Set-ItemProperty -Path $registryPath -Name $valueName_Date -Value $currentDate
 Set-ItemProperty -Path $registryPath -Name $valueName_PowerShellVersion -Value $powerShellVersion
 
 # potvrzení provedené akce 
-Write-Output "Thông tin đã được ghi vào Registry:"
+Write-Output "Informace byla zaznamenána do Registry:"
 Get-Item -Path $registryPath | Get-ItemProperty | Format-List

@@ -2,6 +2,14 @@
 $printerClass = Get-CimClass -ClassName Win32_Printer
 $printerClass.CimClassProperties | Select-Object Name, CimType
 
+#cách 2
+#Získání informací o třídě pro správu tiskáren
+$tiskarnaClass = Get-CimClass -ClassName Win32_Printer
+#Vypsání vlastnosti třídy
+foreach ($property in $tiskarnaClass.CimClassProperties) {
+    Write-Output "Vlastnosti třídy --> Nazev: $($property.Name), Typ: $($property.CimType)"
+}
+
 # Změňte umístění faxu
 $faxPrinter = Get-CimInstance -ClassName Win32_Printer | Where-Object { $_.Name -eq 'Fax' }
 if ($faxPrinter) {

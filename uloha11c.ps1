@@ -4,7 +4,6 @@ $time = $timeData.dateTime
 
 Write-Output $time
 
-
 # kontrole PowerShell je Administrator nebo ne
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     # pokud ne Administrator, restart PowerShell s Administrator

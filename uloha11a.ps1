@@ -1,7 +1,6 @@
 $links= (Invoke-WebRequest -Uri "https://www.novinky.cz").Links.Href
 
 # Write-Output $links
-
 # vytvorit hash table
 $linkCounts = @{}
 
