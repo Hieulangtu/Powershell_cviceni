@@ -46,3 +46,17 @@ tak se sám restartuje, aby mohl změnu času provést.
 Vytvořte skript, který oznámí, že byl spuštěn buď bez administrátorských práv, nebo s nimi. Pokud byl spuštěn bez administrátorských práv, tak se restartuje tak, aby administrátorská práva měl.
 
 Vytvořte skript, který při vytvoření souboru ve vybraném adresáři zapíše do souboru outlog.txt informace o jméně souboru a čas jeho vytvoření.
+
+13.
+Vytvořte skript, který bude monitorovat obsah clipboardu a změny zapíše do textového souboru. Pokud zjistí, že clipboard obsahuje vybrané klíčové slovo, např. "heslo", tak ho barevně vypíše do terminálu.
+Nainstalujte si správce hesel (KeePass, KeepasXC) a ověřte, zde je odolný vůči monitorování clipboardu.
+
+Vytvořte skript, který vypíše co nejpodrobnější seznam nainstalovaného softwaru ve Windows. Myslí se tím, aby těch aplikací bylo uvedeno co nejvíce, aby byl seznam vytvořen z více zdrojů.
+
+14.
+Vytvořte skript, který vykreslí paletu 16 odstínů barev přednastavených v terminálu (viz obrázek dole).
+
+Aktualizujte si antivirovou databázi. Kolik různých hrozeb je schopen detekovat Windows Defender? Kterých hrozeb rozezná nejvíc?  
+
+15.
+Vytvořte skript, který bude v pravidelných intervalech ukládat obsah obrazovky do adresáře "Obrázky" v uživatelském profilu
