@@ -48,16 +48,23 @@
 #     }
 # }
 
-# $params = @{
-#     LogName = 'System'
-#     Level = 2,3
-#     StartTime = (Get-Date).AddDays(-10)
+# $logParams = @{
+#     'LogName'     = 'System'
+#     'FilterXPath' = "*[System[Level=2]]"
 # }
-# Get-WinEvent @params | Select-Object TimeCreated, LevelDisplayName, ProviderName, Message
+# Get-WinEvent @logParams | Where-Object {$_.TimeCreated -ge (Get-Date).AddDays(-10)}
 
+#Vytvoření hashtable pro parametry
 $logParams = @{
-    'LogName'     = 'System'
-    'FilterXPath' = "*[System[Level=2]]"
-}
-
-Get-WinEvent @logParams | Where-Object {$_.TimeCreated -ge (Get-Date).AddDays(-10)}
+    LogName   = 'System'
+    EntryType = 'Error'
+    After     = (Get-Date).AddDays(-10)
+    Before    = Get-Date
+    Newest    = 10
+    }
+    #get events even-log
+    $logEvents = Get-EventLog @logParams
+    #Vypsání informací s lehkou modifikací formátu
+    foreach ($event in $logEvents) {
+    Write-Output ("Time: $($event.TimeGenerated)`nType: $($event.EntryType)`nMessage: $($event.Message)`n")
+    }

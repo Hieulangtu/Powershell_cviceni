@@ -1,26 +1,11 @@
-# Seznam nepoužitých účtů
-$unusedAccounts = Get-LocalUser | Where-Object { $_.LastLogon -eq $null }
+#Vypište seznam nepoužitých účtů a seznam uzamčených účtů.
+$users = Get-WmiObject -Class Win32_UserAccount
+$notusedAcc = $users | Where-Object { $_.Disabled -eq $false -and $_.Lockout -eq $false -and $_.LastLogon -lt $date }
+$blockedAcc = $users | Where-Object { $_.Disabled -eq $false -and $_.Lockout -eq $true }
 
-# Seznam uzamčených účtů
-$lockedAccounts = Get-LocalUser | Where-Object { $_.Enabled -eq $false }
+Write-Host "Nepoužité účty:"
+$notusedAcc | Select-Object Name
+Write-Host "`nUzamčené účty:"
+$blockedAcc | Select-Object Name
 
-# Výpis seznamu nepoužitých účtů
-Write-Output "Seznam nepoužitých účtů:"
-$unusedAccounts | Format-Table -Property Name
-
-# Výpis seznamu uzamčených účtů
-Write-Output "`nSeznam uzamčených účtů:"
-$lockedAccounts | Format-Table -Property Name, Enabled
-
-# Lấy tất cả các tài khoản người dùng
-$allAccounts = Get-LocalUser
-
-# Lấy thông tin về thời điểm đăng nhập gần đây nhất cho từng tài khoản
-$accountsWithLastLogon = $allAccounts | Select-Object Name, LastLogon
-
-# Hiển thị thông tin
-Write-Output "Thông tin về tài khoản và thời điểm đăng nhập gần đây nhất:"
-$accountsWithLastLogon | Format-Table
-
-
-
+#7a và 7b dùng ở powershell cmdlet
