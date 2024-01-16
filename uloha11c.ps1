@@ -1,3 +1,5 @@
+# c. Vytvořte skript, který změní systémový čas počítače např. podle worldtimeapi.org. Pokud ho nespustíte jako administrátor, 
+# tak se sám restartuje, aby mohl změnu času provést.
 $timeData = Invoke-RestMethod -Uri "https://timeapi.io/api/Time/current/zone?timeZone=Europe/Prague"
 
 $time = $timeData.dateTime

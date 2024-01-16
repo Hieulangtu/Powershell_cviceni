@@ -1,6 +1,8 @@
+#a.Vypište seznam odkazů na stránce www.novinky.cz sestupně podle počtu výskytů. Jaké číslo má sekce žena-zdraví?
 $links= (Invoke-WebRequest -Uri "https://www.novinky.cz").Links.Href
 
 # Write-Output $links
+
 # vytvorit hash table
 $linkCounts = @{}
 

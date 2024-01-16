@@ -3,7 +3,7 @@ $Path = "C:\Users\Hieu\Pictures"
 If (!(test-path $path)) {
 New-Item -ItemType Directory -Force -Path $path
 }
-Add-Type -AssemblyName System.Windows.Forms
+# Add-Type -AssemblyName System.Windows.Forms
 $screen = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
 # Get the current screen resolution
 $image = New-Object System.Drawing.Bitmap($screen.Width, $screen.Height)
@@ -18,4 +18,4 @@ $screen_file = "$Path\" + $env:computername + "_" + $env:username + "_" + "$((ge
 # Save the screenshot as a PNG file
 $image.Save($screen_file, [System.Drawing.Imaging.ImageFormat]::Png)
 
-Write-Output $image.Height
+# Write-Output $image.Height

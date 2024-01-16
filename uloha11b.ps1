@@ -1,3 +1,4 @@
+#b.Napište skript, který stáhne obrázky z vybrané galerie na pbase.com.
 $imgs=(Invoke-WebRequest -Uri "https://pbase.com/galleries").Images.src
 # Write-Output $imgs
 $saveFolderPath="D:\4.rocnik-UNOB\1.semester\AplikovaneBezpecnostMilan\dl"

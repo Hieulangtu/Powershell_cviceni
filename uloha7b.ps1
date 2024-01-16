@@ -1,16 +1,12 @@
-# Seznam nepoužitých účtů
-$unusedAccounts = Get-CimInstance -ClassName Win32_UserAccount | Where-Object { $_.LastLogon -eq $null  }
+#Použijte vhodný cmdlet a poté totéž udělejte pomocí CIM rozhraní.
 
-# Seznam uzamčených účtů
-$lockedAccounts = Get-CimInstance -ClassName Win32_UserAccount | Where-Object { $_.Disabled -eq $true }
+$users = Get-LocalUser
+$notusedAcc = $users | Where-Object { $_.Enabled -eq $true -and $_.LastLogon -lt $date }
+$blockedAcc = $users | Where-Object { $_.Enabled -eq $true -and $_.Lockout -eq $true }
 
-# Výpis seznamu nepoužitých účtů
 Write-Host "Nepoužité účty:"
-$unusedAccounts | Format-Table Name
+$notusedAcc | Select-Object Name
+Write-Host "`nUzamčené účty:"
+$blockedAcc | Select-Object Name
 
-# Výpis seznamu uzamčených účtů
-Write-Host "Uzamčené účty:"
-$lockedAccounts | Format-Table Name, Disabled
-
-
-
+#7a và 7b dùng ở powershell cmdlet
