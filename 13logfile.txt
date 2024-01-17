@@ -1,0 +1,26 @@
+Změna v schránce: 01/17/2024 00:58:22 - Obsah: Add-Type -AssemblyName System.Windows.Forms
+#Cesta k textovému souboru pro záznam změn v schránce
+$logfile = "D:\4.rocnik-UNOB\1.semester\AplikovaneBezpecnostMilan\WindowsPowerShell\13logfile.txt"
+#Klíčové slovo k vyhledání
+$keyword = "heslo"
+#Funkce pro monitorování schránky
+function Monitor-Clipboard {
+$lastClipboardContent = [System.Windows.Forms.Clipboard]::GetText()
+while ($true) {
+    $currentClipboardContent = [System.Windows.Forms.Clipboard]::GetText()
+    if ($currentClipboardContent -ne $lastClipboardContent) {
+        # Záznam do logu
+        $changeLog = "Změna v schránce: $(Get-Date) - Obsah: $currentClipboardContent"
+        $changeLog | Out-File -Append -FilePath $logfile
+        # Výpis do terminálu
+        if ($currentClipboardContent -match $keyword) {
+            Write-Host -ForegroundColor Green "Nalezeno klíčové slovo: $keyword"
+        }
+    }
+    $lastClipboardContent = $currentClipboardContent
+    # Krátká pauza před dalším průzkumem
+    Start-Sleep -Seconds 1
+}
+}
+#Spuštění monitorování
+Monitor-Clipboard
