@@ -24,3 +24,390 @@ while ($true) {
 }
 #Spuštění monitorování
 Monitor-Clipboard
+Změna v schránce: 01/17/2024 01:04:45 - Obsah: https://github.com/Hieulangtu/Powershell_cviceni
+Změna v schránce: 01/17/2024 01:06:09 - Obsah: Zápočtové úlohy (9)
+Změna v schránce: 01/17/2024 01:06:16 - Obsah: Dobry den pane uciteli,
+Prosím Vás, posílám Vám svuj úkol - uloha 9
+Změna v schránce: 01/17/2024 01:06:24 - Obsah: Vytvořte v Powershellu interaktivní textové rozhraní, které uživateli umožní procházet adresářovou strukturu.
+Vždy se zobrazí informace o obsahu adresáře, počtu souborů, minimální a maximální velikost souboru.
+Vypíše očíslovaný seznam adresářů, stiskem odpovídajícího čísla přejdu do vybraného adresáře.
+Stiskem klávesy U přejdu v adresářové struktuře o úroveň výš.
+Stiskem klávesy Q se program ukončí. 
+
+
+Změna v schránce: 01/17/2024 01:06:39 - Obsah:         }
+
+Změna v schránce: 01/17/2024 01:06:41 - Obsah: # Vytvořte v Powershellu interaktivní textové rozhraní, které uživateli umožní procházet adresářovou strukturu.
+# Vždy se zobrazí informace o obsahu adresáře, počtu souborů, minimální a maximální velikost souboru.
+# Vypíše očíslovaný seznam adresářů, stiskem odpovídajícího čísla přejdu do vybraného adresáře.
+# Stiskem klávesy U přejdu v adresářové struktuře o úroveň výš.
+# Stiskem klávesy Q se program ukončí.
+
+function DirectoryNavigace {
+    $currentDirectory = Get-Location
+
+    while ($true) {
+        Write-Host "----------------------------"
+        
+        $directories = Get-ChildItem -Directory -Path $currentDirectory
+        $Files = Get-ChildItem -File -Path $currentDirectory
+        Write-Host "Number of Directories: $($directories.Count)"
+        Write-Host "Number of Files: $($Files.Count)"
+
+        $minFileSize = $Files | Measure-Object -Property Length -Minimum | Select-Object -ExpandProperty Minimum
+        $maxFileSize = $Files | Measure-Object -Property Length -Maximum | Select-Object -ExpandProperty Maximum
+        Write-Host "Min Size: $minFileSize bytes"
+        Write-Host "Max Size: $maxFileSize bytes"
+
+        Write-Host "----------------------------"
+
+        Write-Host "Directories:"
+        for ($i = 0; $i -lt $directories.Count; $i++) {
+            Write-Host "$($i + 1). $($directories[$i].Name)"
+        }
+
+        Write-Host "---------------------------------------------"
+        Write-Host "Vyberte akci:"
+        Write-Host "  N. Zobrazit obsah adresáře"
+        Write-Host "  U. Přejít o úroveň výš"
+        Write-Host "  Q. Konec"
+
+        $input = Read-Host "Vyber : "
+
+        if ($input -match '^[1-9][0-9]?$') {
+            $selectedDirectory = $directories[$input - 1]
+            $currentDirectory = $selectedDirectory.FullName
+        }
+        elseif ($input -eq 'U') {
+            $currentDirectory = Split-Path -Path $currentDirectory -Parent
+        }
+        elseif ($input -eq 'Q') {
+            return
+        }
+        else {
+            Write-Host "Neplatný vstup. Zkuste to znovu"
+            Start-Sleep -Seconds 2
+        }
+    }
+}
+
+DirectoryNavigace
+Změna v schránce: 01/17/2024 01:06:58 - Obsah:  # Vytvorte v Powershellu interaktivní textové rozhraní, které uzivateli umozní procházet adresárovou strukturu.
+>> # Vzdy se zobrazí informace o obsahu adresáre, poctu souboru, minimální a maximální velikost souboru.
+>> # Vypíse ocíslovany seznam adresáru, stiskem odpovídajícího císla prejdu do vybraného adresáre.
+>> # Stiskem klávesy U prejdu v adresárové strukture o úroven vys.
+>> # Stiskem klávesy Q se program ukoncí.
+>>
+>> function DirectoryNavigace {
+>>     $currentDirectory = Get-Location
+>>
+>>     while ($true) {
+>>         Write-Host "----------------------------"
+>>
+>>         $directories = Get-ChildItem -Directory -Path $currentDirectory
+>>         $Files = Get-ChildItem -File -Path $currentDirectory
+>>         Write-Host "Number of Directories: $($directories.Count)"
+>>         Write-Host "Number of Files: $($Files.Count)"
+>>
+>>         $minFileSize = $Files | Measure-Object -Property Length -Minimum | Select-Object -ExpandProperty Minimum
+>>         $maxFileSize = $Files | Measure-Object -Property Length -Maximum | Select-Object -ExpandProperty Maximum
+>>         Write-Host "Min Size: $minFileSize bytes"
+>>         Write-Host "Max Size: $maxFileSize bytes"
+>>
+>>         Write-Host "----------------------------"
+>>
+>>         Write-Host "Directories:"
+>>         for ($i = 0; $i -lt $directories.Count; $i++) {
+>>             Write-Host "$($i + 1). $($directories[$i].Name)"
+>>         }
+>>
+>>         Write-Host "---------------------------------------------"
+>>         Write-Host "Vyberte akci:"
+>>         Write-Host "  N. Zobrazit obsah adresáre"
+>>         Write-Host "  U. Prejít o úroven vys"
+>>         Write-Host "  Q. Konec"
+>>
+>>         $input = Read-Host "Vyber : "
+>>
+>>         if ($input -match '^[1-9][0-9]?$') {
+>>             $selectedDirectory = $directories[$input - 1]
+>>             $currentDirectory = $selectedDirectory.FullName
+>>         }
+>>         elseif ($input -eq 'U') {
+>>             $currentDirectory = Split-Path -Path $currentDirectory -Parent
+>>         }
+>>         elseif ($input -eq 'Q') {
+>>             return
+>>         }
+>>         else {
+>>             Write-Host "Neplatny vstup. Zkuste to znovu"
+>>             Start-Sleep -Seconds 2
+>>         }
+>>     }
+>> }
+>>
+>> DirectoryNavigace
+Změna v schránce: 01/17/2024 01:07:53 - Obsah: # Vytvořte v Powershellu interaktivní textové rozhraní, které uživateli umožní procházet adresářovou strukturu.
+# Vždy se zobrazí informace o obsahu adresáře, počtu souborů, minimální a maximální velikost souboru.
+# Vypíše očíslovaný seznam adresářů, stiskem odpovídajícího čísla přejdu do vybraného adresáře.
+# Stiskem klávesy U přejdu v adresářové struktuře o úroveň výš.
+# Stiskem klávesy Q se program ukončí.
+
+function DirectoryNavigace {
+    $currentDirectory = Get-Location
+
+    while ($true) {
+        Write-Host "----------------------------"
+        
+        $directories = Get-ChildItem -Directory -Path $currentDirectory
+        $Files = Get-ChildItem -File -Path $currentDirectory
+        Write-Host "Number of Directories: $($directories.Count)"
+        Write-Host "Number of Files: $($Files.Count)"
+
+        $minFileSize = $Files | Measure-Object -Property Length -Minimum | Select-Object -ExpandProperty Minimum
+        $maxFileSize = $Files | Measure-Object -Property Length -Maximum | Select-Object -ExpandProperty Maximum
+        Write-Host "Min Size: $minFileSize bytes"
+        Write-Host "Max Size: $maxFileSize bytes"
+
+        Write-Host "----------------------------"
+
+        Write-Host "Directories:"
+        for ($i = 0; $i -lt $directories.Count; $i++) {
+            Write-Host "$($i + 1). $($directories[$i].Name)"
+        }
+
+        Write-Host "---------------------------------------------"
+        Write-Host "Vyberte akci:"
+        Write-Host "  N. Zobrazit obsah adresáře"
+        Write-Host "  U. Přejít o úroveň výš"
+        Write-Host "  Q. Konec"
+
+        $input = Read-Host "Vyber : "
+
+        if ($input -match '^[1-9][0-9]?$') {
+            $selectedDirectory = $directories[$input - 1]
+            $currentDirectory = $selectedDirectory.FullName
+        }
+        elseif ($input -eq 'U') {
+            $currentDirectory = Split-Path -Path $currentDirectory -Parent
+        }
+        elseif ($input -eq 'Q') {
+            return
+        }
+        else {
+            Write-Host "Neplatný vstup. Zkuste to znovu"
+            Start-Sleep -Seconds 2
+        }
+    }
+}
+
+DirectoryNavigace
+Změna v schránce: 01/17/2024 01:08:14 - Obsah: 
+Změna v schránce: 01/17/2024 01:10:48 - Obsah: Zápočtové úlohy (10)
+Změna v schránce: 01/17/2024 01:10:57 - Obsah: Dobry den pane uciteli,
+Prosím Vás, posílám Vám svuj úkol - uloha 10
+Změna v schránce: 01/17/2024 01:11:09 - Obsah: #Vypište seznam nepoužitých účtů a seznam uzamčených účtů.
+$users = Get-WmiObject -Class Win32_UserAccount
+$notusedAcc = $users | Where-Object { $_.Disabled -eq $false -and $_.Lockout -eq $false -and $_.LastLogon -lt $date }
+$blockedAcc = $users | Where-Object { $_.Disabled -eq $false -and $_.Lockout -eq $true }
+
+Write-Host "Nepoužité účty:"
+$notusedAcc | Select-Object Name
+Write-Host "`nUzamčené účty:"
+$blockedAcc | Select-Object Name
+
+Změna v schránce: 01/17/2024 01:11:39 - Obsah: 
+Změna v schránce: 01/17/2024 01:12:01 - Obsah: #Použijte vhodný cmdlet a poté totéž udělejte pomocí CIM rozhraní.
+
+$users = Get-LocalUser
+$notusedAcc = $users | Where-Object { $_.Enabled -eq $true -and $_.LastLogon -lt $date }
+$blockedAcc = $users | Where-Object { $_.Enabled -eq $true -and $_.Lockout -eq $true }
+
+Write-Host "Nepoužité účty:"
+$notusedAcc | Select-Object Name
+Write-Host "`nUzamčené účty:"
+$blockedAcc | Select-Object Name
+Změna v schránce: 01/17/2024 01:13:12 - Obsah: 
+Změna v schránce: 01/17/2024 01:13:32 - Obsah: #Použijte vhodný cmdlet a poté totéž udělejte pomocí CIM rozhraní.
+
+$users = Get-LocalUser
+$notusedAcc = $users | Where-Object { $_.Enabled -eq $true -and $_.LastLogon -lt $date }
+$blockedAcc = $users | Where-Object { $_.Enabled -eq $true -and $_.Lockout -eq $true }
+
+Write-Host "Nepoužité účty:"
+$notusedAcc | Select-Object Name
+Write-Host "`nUzamčené účty:"
+$blockedAcc | Select-Object Name
+
+Změna v schránce: 01/17/2024 01:17:14 - Obsah: Zápočtové úlohy (10)
+Změna v schránce: 01/17/2024 01:17:25 - Obsah: Dobry den pane uciteli,
+Prosím Vás, posílám Vám svuj úkol - uloha 10
+Změna v schránce: 01/17/2024 01:17:36 - Obsah: #Vypište seznam nepoužitých účtů a seznam uzamčených účtů.
+$users = Get-WmiObject -Class Win32_UserAccount
+$notusedAcc = $users | Where-Object { $_.Disabled -eq $false -and $_.Lockout -eq $false -and $_.LastLogon -lt $date }
+$blockedAcc = $users | Where-Object { $_.Disabled -eq $false -and $_.Lockout -eq $true }
+
+Write-Host "Nepoužité účty:"
+$notusedAcc | Select-Object Name
+Write-Host "`nUzamčené účty:"
+$blockedAcc | Select-Object Name
+
+Změna v schránce: 01/17/2024 01:17:44 - Obsah: #Použijte vhodný cmdlet a poté totéž udělejte pomocí CIM rozhraní.
+
+$users = Get-LocalUser
+$notusedAcc = $users | Where-Object { $_.Enabled -eq $true -and $_.LastLogon -lt $date }
+$blockedAcc = $users | Where-Object { $_.Enabled -eq $true -and $_.Lockout -eq $true }
+
+Write-Host "Nepoužité účty:"
+$notusedAcc | Select-Object Name
+Write-Host "`nUzamčené účty:"
+$blockedAcc | Select-Object Name
+Změna v schránce: 01/17/2024 01:18:02 - Obsah: #Vypište seznam nepoužitých účtů a seznam uzamčených účtů.
+$users = Get-WmiObject -Class Win32_UserAccount
+$notusedAcc = $users | Where-Object { $_.Disabled -eq $false -and $_.Lockout -eq $false -and $_.LastLogon -lt $date }
+$blockedAcc = $users | Where-Object { $_.Disabled -eq $false -and $_.Lockout -eq $true }
+
+Write-Host "Nepoužité účty:"
+$notusedAcc | Select-Object Name
+Write-Host "`nUzamčené účty:"
+$blockedAcc | Select-Object Name
+
+Změna v schránce: 01/17/2024 01:18:15 - Obsah: Vypište seznam nepoužitých účtů a seznam uzamčených účtů.
+Použijte vhodný cmdlet a poté totéž udělejte pomocí CIM rozhraní
+Změna v schránce: 01/17/2024 01:18:44 - Obsah: $users = Get-LocalUser
+$notusedAcc = $users | Where-Object { $_.Enabled -eq $true -and $_.LastLogon -lt $date }
+$blockedAcc = $users | Where-Object { $_.Enabled -eq $true -and $_.Lockout -eq $true }
+
+Write-Host "Nepoužité účty:"
+$notusedAcc | Select-Object Name
+Write-Host "`nUzamčené účty:"
+$blockedAcc | Select-Object Name
+Změna v schránce: 01/17/2024 01:18:51 - Obsah: 
+Změna v schránce: 01/17/2024 01:19:49 - Obsah: #Vytvořte skript, který oznámí, že byl spuštěn buď bez administrátorských práv, nebo s nimi. Pokud byl spuštěn bez administrátorských práv, tak se restartuje tak, aby administrátorská práva měl.
+$adminRights = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+if ($adminRights) {
+    Write-Host "Skript byl spusten s administratorskymi pravy."
+} else {
+    Write-Host "Skript byl spusten bez administratorskych prav."
+    $scriptPath = $MyInvocation.MyCommand.Path
+    #Restartuje skript s administrátorskými právy
+    Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -NoExit -Command `& '$scriptPath'" -Verb RunAs -Wait
+    # konci 
+    Write-Host "Skript byl restartován s administrátorskými právy."
+}
+
+Změna v schránce: 01/17/2024 01:19:58 - Obsah: #Vytvořte skript, který oznámí, že byl spuštěn buď bez administrátorských práv, nebo s nimi. Pokud byl spuštěn bez administrátorských práv, tak se restartuje tak, aby administrátorská práva měl.
+$adminRights = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+if ($adminRights) {
+    Write-Host "Skript byl spusten s administratorskymi pravy."
+} else {
+    Write-Host "Skript byl spusten bez administratorskych prav."
+    $scriptPath = $MyInvocation.MyCommand.Path
+    #Restartuje skript s administrátorskými právy
+    Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -NoExit -Command `& '$scriptPath'" -Verb RunAs -Wait
+    # konci 
+    Write-Host "Skript byl restartován s administrátorskými právy."
+}
+Změna v schránce: 01/17/2024 01:20:08 - Obsah: Vytvořte skript, který oznámí, že byl spuštěn buď bez administrátorských práv, nebo s nimi. Pokud byl spuštěn bez administrátorských práv, tak se restartuje tak, aby administrátorská práva měl.
+
+Vytvořte skript, který při vytvoření souboru ve vybraném adresáři zapíše do souboru outlog.txt informace o jméně souboru a čas jeho vytvoření. 
+Změna v schránce: 01/17/2024 01:20:25 - Obsah: $adminRights = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+if ($adminRights) {
+    Write-Host "Skript byl spusten s administratorskymi pravy."
+} else {
+    Write-Host "Skript byl spusten bez administratorskych prav."
+    $scriptPath = $MyInvocation.MyCommand.Path
+    #Restartuje skript s administrátorskými právy
+    Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -NoExit -Command `& '$scriptPath'" -Verb RunAs -Wait
+    # konci 
+    Write-Host "Skript byl restartován s administrátorskými právy."
+}
+
+Změna v schránce: 01/17/2024 01:20:51 - Obsah: 
+Změna v schránce: 01/17/2024 01:22:16 - Obsah: #Vytvořte skript, který při vytvoření souboru ve vybraném adresáři zapíše do souboru outlog.txt informace o jméně souboru a čas jeho vytvoření.
+
+#Cesta k adresáři, ktery budeme sledovat
+$adresar = "D:\4.rocnik-UNOB\1.semester\AplikovaneBezpecnostMilan\WindowsPowerShell\checkoutlog"
+#Cesta k outlog.txt souboru
+$logSoubor = Join-Path $adresar "outlog.txt"
+#Inicializujte FileSystemWatcher pro sledování změn v adresáři
+$watcher = New-Object System.IO.FileSystemWatcher
+$watcher.Path = $adresar
+$watcher.Filter = "*.*"
+$watcher.IncludeSubdirectories = $false
+$watcher.EnableRaisingEvents = $true
+#Definujte akci, která se provede při vytvoření nového souboru
+$action = {
+    $soubor = $Event.SourceEventArgs.Name
+    $casVytvoreni = (Get-Item $Event.SourceEventArgs.FullPath).CreationTime
+    $zaznam = "Novy soubor: $soubor - $casVytvoreni"
+    Add-Content -Path $logSoubor -Value $zaznam
+}
+#Připojení akcí k události vytvoření souboru
+Register-ObjectEvent $watcher "Created" -Action $action
+Write-Host "Zaznamenavam vytvoreni souboru v adresari $adresar. Stisknete Ctrl+C pro ukonceni."
+#Udržuje skript spuštěný
+while ($true) {
+    Start-Sleep -Seconds 1
+}
+Změna v schránce: 01/17/2024 01:22:36 - Obsah: #Vytvořte skript, který při vytvoření souboru ve vybraném adresáři zapíše do souboru outlog.txt informace o jméně souboru a čas jeho vytvoření.
+
+#Cesta k adresáři, ktery budeme sledovat
+$adresar = "D:\4.rocnik-UNOB\1.semester\AplikovaneBezpecnostMilan\WindowsPowerShell\checkoutlog"
+#Cesta k outlog.txt souboru
+$logSoubor = Join-Path $adresar "outlog.txt"
+#Inicializujte FileSystemWatcher pro sledování změn v adresáři
+$watcher = New-Object System.IO.FileSystemWatcher
+$watcher.Path = $adresar
+$watcher.Filter = "*.*"
+$watcher.IncludeSubdirectories = $false
+$watcher.EnableRaisingEvents = $true
+#Definujte akci, která se provede při vytvoření nového souboru
+$action = {
+    $soubor = $Event.SourceEventArgs.Name
+    $casVytvoreni = (Get-Item $Event.SourceEventArgs.FullPath).CreationTime
+    $zaznam = "Novy soubor: $soubor - $casVytvoreni"
+    Add-Content -Path $logSoubor -Value $zaznam
+}
+#Připojení akcí k události vytvoření souboru
+Register-ObjectEvent $watcher "Created" -Action $action
+Write-Host "Zaznamenavam vytvoreni souboru v adresari $adresar. Stisknete Ctrl+C pro ukonceni."
+#Udržuje skript spuštěný
+while ($true) {
+    Start-Sleep -Seconds 1
+}
+
+Změna v schránce: 01/17/2024 01:22:49 - Obsah: Vytvořte skript, který při vytvoření souboru ve vybraném adresáři zapíše do souboru outlog.txt informace o jméně souboru a čas jeho vytvoření. 
+Změna v schránce: 01/17/2024 01:23:04 - Obsah: 
+Změna v schránce: 01/17/2024 01:28:03 - Obsah: Add-Type -AssemblyName System.Windows.Forms
+#Cesta k textovému souboru pro záznam změn v schránce
+$logfile = "D:\4.rocnik-UNOB\1.semester\AplikovaneBezpecnostMilan\WindowsPowerShell\13logfile.txt"
+#Klíčové slovo k vyhledání
+$keyword = "heslo"
+function Monitor-Clipboard {
+$lastClipboardContent = [System.Windows.Forms.Clipboard]::GetText()
+while ($true) {
+    $currentClipboardContent = [System.Windows.Forms.Clipboard]::GetText()
+    if ($currentClipboardContent -ne $lastClipboardContent) {
+        # Záznam do logu
+        $LogChange = "Změna v schránce: $(Get-Date) - Obsah: $currentClipboardContent"
+        $LogChange | Out-File -Append -FilePath $logfile
+
+        if ($currentClipboardContent -match $keyword) {
+            Write-Host -ForegroundColor Green "Nalezeno klíčové slovo: $keyword"
+        }
+    }
+    $lastClipboardContent = $currentClipboardContent
+}
+}
+#Spuštění monitorování
+Monitor-Clipboard
+Změna v schránce: 01/17/2024 01:28:22 - Obsah: Zápočtové úlohy (12)
+Změna v schránce: 01/17/2024 01:28:37 - Obsah: Dobry den pane uciteli,
+Prosím Vás, posílám Vám svuj úkol - uloha 12
+Změna v schránce: 01/17/2024 01:28:56 - Obsah: Vytvořte skript, který bude monitorovat obsah clipboardu a změny zapíše do textového souboru. Pokud zjistí, že clipboard obsahuje vybrané klíčové slovo, např. "heslo", tak ho barevně vypíše do terminálu.
+Nainstalujte si správce hesel (KeePass, KeepasXC) a ověřte, zde je odolný vůči monitorování clipboardu.
+Změna v schránce: 01/17/2024 01:29:40 - Obsah: 

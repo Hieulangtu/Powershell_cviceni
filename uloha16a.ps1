@@ -13,8 +13,8 @@ $emailParams = @{
     To = $smtpTo
     Subject = $messageSubject
     Body = $messageBody
-    Port = "587"
-    # UseSsl = $true
+    Port = 587
+    UseSsl = $true
     Credential = $credentials
 }
 
