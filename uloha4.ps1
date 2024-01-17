@@ -3,7 +3,7 @@ Set-Alias -Name np -Value "notepad.exe"
 Set-Alias -Name ct -Value "control.exe"
 
 # Exportujte je do formátu JSON
-$aliases = Get-Alias -Name np,ct| Select-Object Name, Definition| ConvertTo-Json | Set-Content -Path "D:\alias.json"
+$aliases = Get-Alias -Name np,ct | Select-Object Name, Definition| ConvertTo-Json | Set-Content -Path "D:\4.rocnik-UNOB\1.semester\AplikovaneBezpecnostMilan\WindowsPowerShell\alias.json"
 
 
 # smazat
@@ -11,7 +11,7 @@ Remove-Item alias:np -Force
 Remove-Item alias:ct -Force
 
 # obnovit
-$aliasData = Get-Content -Path "D:\alias.json" -Raw | ConvertFrom-Json
+$aliasData = Get-Content -Path "D:\4.rocnik-UNOB\1.semester\AplikovaneBezpecnostMilan\WindowsPowerShell\alias.json" -Raw | ConvertFrom-Json
 
 
 $aliasData | ForEach-Object {

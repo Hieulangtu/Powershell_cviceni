@@ -10,12 +10,12 @@ Value = $.Definition
 Option = $_.Options
 }
 } | ConvertTo-Json
-$aliasData | Out-File -FilePath "alias.json"
+$aliasData | Out-File -FilePath "D:\4.rocnik-UNOB\1.semester\AplikovaneBezpecnostMilan\WindowsPowerShell\alias.json"
 #Odstranění aliasů
 Remove-Item -Path Alias: np
 Remove-Item -Path Alias: np
 #Načtení aliasů z JSON a obnovení
-$importedAliasData = Get-Content -Raw -Path "alias.json" | ConvertFrom-Json
+$importedAliasData = Get-Content -Raw -Path "D:\4.rocnik-UNOB\1.semester\AplikovaneBezpecnostMilan\WindowsPowerShell\alias.json" | ConvertFrom-Json
 foreach ($aliasEntry in $importedAliasData) {
 New-Alias -Name $aliasEntry.Name -Value $aliasEntry.Value
 }

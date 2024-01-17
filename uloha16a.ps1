@@ -2,7 +2,8 @@
 $credentials = Get-Credential #lấy thông tin
 $smtpServer = "smtp.unob.cz"
 $smtpFrom = "trunghieu.nguyen@unob.cz"
-$smtpTo = "jirsamilan@gmail.com"
+# $smtpTo = "jirsamilan@gmail.com"
+$smtpTo = "thanhhiep.nguyen@unob.com"
 $messageSubject = "Testovaci email - Uloha 16"
 $messageBody = " uloha 16"
 
